@@ -8,11 +8,16 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\ServiceDefaults\ServiceDefaults.csproj"/>
+		<ProjectReference Include="..\Shared\Shared.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Aspire.Npgsql.EntityFrameworkCore.PostgreSQL"/>
 		<PackageReference Include="Aspire.StackExchange.Redis.OutputCaching"/>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
 	</ItemGroup>
 
 	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">

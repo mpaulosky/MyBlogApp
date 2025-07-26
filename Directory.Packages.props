@@ -12,6 +12,7 @@
     <PackageVersion Include="Aspire.Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.3.1" />
     <PackageVersion Include="Aspire.StackExchange.Redis.OutputCaching" Version="9.3.1" />
     <PackageVersion Include="coverlet.collector" Version="6.0.2" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.7" />
     <PackageVersion Include="Microsoft.Extensions.Http.Resilience" Version="9.7.0" />
     <PackageVersion Include="Microsoft.Extensions.ServiceDiscovery" Version="9.3.1" />
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.10.0" />
