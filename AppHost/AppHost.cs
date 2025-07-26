@@ -4,10 +4,16 @@ var builder = DistributedApplication.CreateBuilder(args);
 
 var cache = builder.AddRedis(CACHE);
 
-var postgres = builder.AddPostgres(SERVER)
-		.WithDataVolume(isReadOnly: false);
+var pgServer = builder.AddPostgres(SERVER)
+		.WithLifetime(ContainerLifetime.Persistent)
+		.WithDataVolume($"{SERVER}-data")
+		.WithPgAdmin(config =>
+		{
+			config.WithImageTag("latest");
+			config.WithLifetime(ContainerLifetime.Persistent);
+		});
 
-var postgresDb = postgres.AddDatabase(DATABASE);
+var postgresDb = pgServer.AddDatabase(DATABASE);
 
 builder.AddProject<Projects.Web>(WEBSITE)
 		.WithExternalHttpEndpoints()
