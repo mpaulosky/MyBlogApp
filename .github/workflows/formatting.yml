@@ -53,7 +53,7 @@ jobs:
         id: dotnet-format
         run: |
           echo -e "\033[36mRunning dotnet format on:\033[0m ${{ steps.changed_cs.outputs.files }}"
-          result=$(dotnet format src/TagzApp.sln --verbosity normal --exclude src/**/Migrations/ --include ${{ steps.changed_cs.outputs.files }})
+          result=$(dotnet format src/MyBlogApp.sln --verbosity normal --exclude src/**/Migrations/ --include ${{ steps.changed_cs.outputs.files }})
           echo -e "\033[36mdotnet-format result:\033[0m"
           echo "$result"
           count=$(echo "$result" | grep -c "Formatted code file" || true)
