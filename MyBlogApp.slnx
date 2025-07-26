@@ -7,6 +7,21 @@
     <File Path="LICENSE.txt" />
     <File Path="README.md" />
   </Folder>
+  <Folder Name="/Files/.github/">
+    <File Path=".github\ISSUE_TEMPLATE\bug_report.md" />
+    <File Path=".github\ISSUE_TEMPLATE\config.yml" />
+    <File Path=".github\ISSUE_TEMPLATE\feature_request.md" />
+    <File Path=".github\workflows\dotnet.yml" />
+    <File Path=".github\workflows\formatting.yml" />
+    <File Path=".github\workflows\todos-to-issues.yml" />
+    <File Path=".github\.copilot-commit-message-instructions.md" />
+    <File Path=".github\blazor.instructions.md" />
+    <File Path=".github\codecov.yml" />
+    <File Path=".github\copilot-instructions.md" />
+    <File Path=".github\csharp-xunit.prompt.md" />
+    <File Path=".github\dependabot.yml" />
+    <File Path=".github\git-commit-instructions.md" />
+  </Folder>
   <Project Path="AppHost.Tests/AppHost.Tests.csproj" />
   <Project Path="AppHost/AppHost.csproj" />
   <Project Path="ServiceDefaults/ServiceDefaults.csproj" />
