@@ -26,9 +26,7 @@ public class MyBlogContext : DbContext
 	{
 
 		modelBuilder
-			.Entity<Article>()
-			.HasIndex(e => e.Id)
-			.IsUnique();
+			.Entity<Article>();
 
 		modelBuilder
 				.Entity<Article>()
