@@ -30,7 +30,7 @@ public abstract class Entity
 	/// </summary>
 	[Required(ErrorMessage = "A Created On Date is required")]
 	[Display(Name = "Created On")]
-	public DateTimeOffset CreatedOn { get; protected init; } = DateTime.UtcNow;
+	public DateTimeOffset CreatedOn { get; protected init; } = DateTimeOffset.UtcNow;
 
 	/// <summary>
 	///   Gets or sets the date and time when this entity was last modified.
