@@ -21,6 +21,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
 
     env:
       NUGET_PACKAGES: ${{ github.workspace }}/.nuget/packages
@@ -46,7 +48,7 @@ jobs:
         run: npm install
 
       - name: Build Tailwind CSS
-        working-directory: Web
+        working-directory: Web/wwwroot
         run: npm run build:css
 
       - name: Restore dependencies
@@ -96,7 +98,7 @@ jobs:
       - name: Install GitVersion
         uses: gittools/actions/gitversion/setup@v4.0.1
         with:
-          versionSpec: "6.0"
+          versionSpec: "6.x"
 
       - name: Use GitVersion
         id: gitversion # step id used as a reference for output values
