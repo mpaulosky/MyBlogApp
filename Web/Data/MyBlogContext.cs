@@ -49,9 +49,7 @@ public class MyBlogContext : DbContext
 				.HasConversion(new DateTimeOffsetConverter());
 
 		modelBuilder
-			.Entity<Category>()
-			.HasIndex(e => e.Id)
-			.IsUnique();
+			.Entity<Category>();
 
 		modelBuilder
 				.Entity<Category>()
