@@ -1,0 +1,10 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003ALateBoundTestFramework_002Ecs_002Fl_003AC_0021_003FUsers_003Fteqsl_003FAppData_003FLocal_003FJetBrains_003FShared_003FvAny_003FSourcesCache_003F22647a7960d2619ab733924a2acfee09d32a8827c8c680a37cc4863678abec_003FLateBoundTestFramework_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=76cab854_002D83d3_002D4ef4_002D9617_002Dbd4b50a5a35b/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="All tests from Solution" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;Not&gt;&#xD;
+    &lt;TestAncestor&gt;&#xD;
+      &lt;TestId&gt;Testing Platform::21EB3E7C-4CB0-42C4-937E-21323A1A53C3::net9.0::Shared.ServiceTests&lt;/TestId&gt;&#xD;
+      &lt;TestId&gt;Testing Platform::757A9E2B-02AA-C000-EECF-EDCEE9A95A8B::net9.0::Web.Data.Entities.ArticleTests&lt;/TestId&gt;&#xD;
+    &lt;/TestAncestor&gt;&#xD;
+  &lt;/Not&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

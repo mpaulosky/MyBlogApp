@@ -23,7 +23,7 @@ public class Author
 	/// <param name="userName">The username.</param>
 	/// <param name="email">The email address.</param>
 	/// <param name="roles">The list of roles.</param>
-	private Author(string id, string userName, string email, List<string> roles)
+	public Author(string id, string userName, string email, List<string> roles)
 	{
 		Id = id;
 		UserName = userName;
