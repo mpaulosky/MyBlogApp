@@ -2,15 +2,15 @@ name: Code formatting
 on:
   push:
     paths:
-      - src/**.cs
-      - src/**.js
-      - src/**.css
+      - /**.cs
+      - /**.js
+      - /**.css
 permissions:
   contents: write
 
 jobs:
   code-formatting:
-    if: github.ref != 'refs/heads/main' && github.repository != 'mpaulosky/BlazorApp'
+    if: github.ref != 'refs/heads/main' && github.repository != 'mpaulosky/MyBlogApp'
     runs-on: ubuntu-latest
 
     steps:
@@ -37,23 +37,23 @@ jobs:
       - name: Add formatting rules to .editorconfig
         if: steps.changed_cs.outputs.files != ''
         run: |
-          echo "" >> src/.editorconfig
-          echo "[*.cs]" >> src/.editorconfig
-          echo "dotnet_diagnostic.IDE0005.severity = error" >> src/.editorconfig # Remove unnecessary using directives
-          echo "dotnet_diagnostic.IDE0090.severity = error" >> src/.editorconfig # Simplify new expression
-          echo "dotnet_diagnostic.IDE0003.severity = error" >> src/.editorconfig # this and Me preferences
-          echo "dotnet_diagnostic.IDE0009.severity = error" >> src/.editorconfig # this and Me preferences
+          echo "" >> .editorconfig
+          echo "[*.cs]" >> .editorconfig
+          echo "dotnet_diagnostic.IDE0005.severity = error" >> .editorconfig # Remove unnecessary using directives
+          echo "dotnet_diagnostic.IDE0090.severity = error" >> .editorconfig # Simplify new expression
+          echo "dotnet_diagnostic.IDE0003.severity = error" >> .editorconfig # this and Me preferences
+          echo "dotnet_diagnostic.IDE0009.severity = error" >> .editorconfig # this and Me preferences
       - name: Setup .NET
         if: steps.changed_cs.outputs.files != ''
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 8.0.x
+          global-json-file: global.json
       - name: Run dotnet format
         if: steps.changed_cs.outputs.files != ''
         id: dotnet-format
         run: |
           echo -e "\033[36mRunning dotnet format on:\033[0m ${{ steps.changed_cs.outputs.files }}"
-          result=$(dotnet format src/MyBlogApp.sln --verbosity normal --exclude src/**/Migrations/ --include ${{ steps.changed_cs.outputs.files }})
+          result=$(dotnet format MyBlogApp.slnx --verbosity normal --exclude /**Data/Migrations/ --include ${{ steps.changed_cs.outputs.files }})
           echo -e "\033[36mdotnet-format result:\033[0m"
           echo "$result"
           count=$(echo "$result" | grep -c "Formatted code file" || true)

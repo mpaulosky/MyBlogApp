@@ -22,7 +22,11 @@
     <File Path=".github\dependabot.yml" />
     <File Path=".github\git-commit-instructions.md" />
   </Folder>
-  <Project Path="AppHost.Tests/AppHost.Tests.csproj" />
+  <Folder Name="/tests/">
+    <Project Path="tests\AppHost.Tests\AppHost.Tests.csproj" Type="Classic C#" />
+    <Project Path="tests\Shared.Tests\Shared.Tests.csproj" Type="Classic C#" />
+    <Project Path="tests\Web.Tests\Web.Tests.csproj" Type="Classic C#" />
+  </Folder>
   <Project Path="AppHost/AppHost.csproj" />
   <Project Path="ServiceDefaults/ServiceDefaults.csproj" />
   <Project Path="Shared/Shared.csproj" />

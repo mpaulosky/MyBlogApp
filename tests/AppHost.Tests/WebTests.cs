@@ -1,6 +1,11 @@
+using System.Net;
+
+using Aspire.Hosting.Testing;
+
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace AppHost.Tests;
+namespace AppHost;
 
 public class WebTests
 {
