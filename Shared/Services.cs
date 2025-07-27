@@ -1,4 +1,13 @@
-﻿namespace Shared;
+﻿// =======================================================
+// Copyright (c) 2025. All rights reserved.
+// File Name :     Services.cs
+// Company :       mpaulosky
+// Author :        Matthew
+// Solution Name : MyBlogApp
+// Project Name :  Shared
+// =======================================================
+
+namespace Shared;
 
 public static class Services
 {

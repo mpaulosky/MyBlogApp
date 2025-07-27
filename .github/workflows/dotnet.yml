@@ -75,7 +75,7 @@ jobs:
       - name: Upload Test Results
         uses: actions/upload-artifact@v4
         with:
-          name: TailwindBlog-Test-Results
+          name: MyBlogApp-Test-Results
           path: TestResults
 
       - name: Codecov
