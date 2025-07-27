@@ -47,7 +47,11 @@ jobs:
       - name: Install Node.js dependencies
         working-directory: Web
         run: npm install
-
+    
+      - name: Fix permissions for Tailwind CLI
+        working-directory: Web
+        run: chmod +x ./node_modules/.bin/tailwindcss
+    
       - name: Build Tailwind CSS
         working-directory: Web/wwwroot
         run: npm run build:css
