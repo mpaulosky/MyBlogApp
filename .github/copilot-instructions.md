@@ -106,7 +106,7 @@ These instructions define the required coding, architecture, and project rules f
 - **Use MongoDB:** `true` (see `Persistence.MongoDb/`)
 - **Prefer Async Operations:** `true`
 - **Use Migrations:** `false` (for MongoDB)
-- **Use TestContainers:** `true` (for Integration testing, see `Tests/TailwindBlog.Persistence.MongoDb.Tests.Integration/`)
+- **Use TestContainers:** `true` (for Integration testing, see `Tests/MyBlogApp.Persistence.MongoDb.Tests.Integration/`)
 - **Use Change Tracking:** `true`
 - **Use DbContext Pooling:** `true`
 - **Use In-Memory Database:** `false`

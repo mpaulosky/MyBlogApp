@@ -3,7 +3,7 @@
 // File Name :     Result.cs
 // Company :       mpaulosky
 // Author :        Matthew
-// Solution Name : TailwindBlog
+// Solution Name : MyBlogApp
 // Project Name :  Domain
 // =======================================================
 

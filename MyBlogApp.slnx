@@ -12,8 +12,6 @@
     <File Path=".github\ISSUE_TEMPLATE\config.yml" />
     <File Path=".github\ISSUE_TEMPLATE\feature_request.md" />
     <File Path=".github\workflows\dotnet.yml" />
-    <File Path=".github\workflows\formatting.yml" />
-    <File Path=".github\workflows\todos-to-issues.yml" />
     <File Path=".github\.copilot-commit-message-instructions.md" />
     <File Path=".github\blazor.instructions.md" />
     <File Path=".github\codecov.yml" />
