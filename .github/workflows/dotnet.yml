@@ -60,7 +60,7 @@ jobs:
         run: dotnet restore
 
       - name: Build
-        run: dotnet build --no-restore
+        run: dotnet build MyBlogApp.slnx --no-restore
         
       - name: Create Test Results Directory
         run: mkdir -p TestResults
