@@ -52,7 +52,7 @@ public class AppUser
 	///   Gets or sets the list of roles assigned to the user.
 	/// </summary>
 	[Display(Name = "User Roles")]
-	public List<string>? Roles { get; set; }
+	public List<string> Roles { get; set; }
 
 	/// <summary>
 	///   Gets an empty instance of AppUser with default values.
