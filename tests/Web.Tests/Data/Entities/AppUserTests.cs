@@ -49,7 +49,7 @@ public class AppUserTests
 	{
 
 		// Arrange & Act
-		var user = Author.Empty;
+		var user = AppUser.Empty;
 
 		// Assert
 		user.Id.Should().BeEmpty();
