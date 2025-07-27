@@ -6,7 +6,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceDefaults", "ServiceD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{CD030358-E536-448B-9C07-8971F7111B33}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppHost.Tests", "AppHost.Tests\AppHost.Tests.csproj", "{B004B9D6-AB1F-4E87-8292-B98CB446C096}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppHost.Tests", "tests/AppHost.Tests\AppHost.Tests.csproj", "{B004B9D6-AB1F-4E87-8292-B98CB446C096}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Files", "Files", "{880B5618-206A-4367-978D-3F7743C393D8}"
 	ProjectSection(SolutionItems) = preProject
