@@ -6,7 +6,6 @@
 		<OutputType>Exe</OutputType>
 		<RootNamespace>Web</RootNamespace>
 		<TargetFramework>net9.0</TargetFramework>
-		<TargetFramework>net9.0</TargetFramework>
 		<TestingPlatformDotnetTestSupport>true</TestingPlatformDotnetTestSupport>
 		<UseMicrosoftTestingPlatformRunner>true</UseMicrosoftTestingPlatformRunner>
 	</PropertyGroup>
