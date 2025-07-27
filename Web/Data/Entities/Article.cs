@@ -137,4 +137,23 @@ public class Article : Entity
 	/// </summary>
 	public DateTimeOffset? PublishedOn { get; set; }
 
+	/// <summary>
+	///   Gets an empty instance of Article with default values.
+	/// </summary>
+	public static readonly Article Empty = new()
+	{
+			Id = Guid.Empty,
+			Title = string.Empty,
+			Introduction = string.Empty,
+			Content = string.Empty,
+			CoverImageUrl = string.Empty,
+			UrlSlug = string.Empty,
+			AuthorId = string.Empty,
+			Author = Author.Empty,
+			CategoryId = Guid.Empty,
+			Category = Category.Empty,
+			IsPublished = false,
+			PublishedOn = null
+	};
+
 }
