@@ -144,7 +144,7 @@ public class ArticleTests
 		article.IsPublished.Should().BeTrue();
 		article.PublishedOn.Should().Be(publishedOn);
 		article.Author.Should().BeEquivalentTo(author);
-		article.CreatedOn.Should().BeCloseTo(DateTime.UtcNow, TimeSpan.FromSeconds(2));
+		article.CreatedOn.Should().BeCloseTo(DateTimeOffset.UtcNow, TimeSpan.FromSeconds(2));
 
 	}
 
