@@ -67,7 +67,7 @@ jobs:
       - name: Run all tests in all test projects
         run: |
           mkdir -p ${{ github.workspace }}/TestResults
-          for proj in $(find . -name "*.csproj" -path "*/tests/*"); do
+          for proj in $(find . -name "*.csproj" -path "*/[Tt]ests/*"); do
             name=$(basename "$proj" .csproj)
             dotnet test "$proj" --no-build --no-restore \
               --logger "trx;LogFileName=${{ github.workspace }}/TestResults/${name}.trx"
