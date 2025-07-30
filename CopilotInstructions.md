@@ -130,7 +130,7 @@ For details and examples, see [CONTRIBUTING.md](docs/CONTRIBUTING.md).
 
 ### Background Services (Required)
 
-- **Require Background Service:** `true`
+- **Require Background Service:** `true` (type "custom")
 
 ### Environment (Required)
 

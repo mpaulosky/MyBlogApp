@@ -10,7 +10,7 @@ The following versions of MyBlogApp are supported with security updates:
 
 ## Reporting a Vulnerability
 
-To report a security vulnerability, please email [security@myblogapp.com](mailto:security@myblogapp.com) or open a private issue on GitHub.  
+To report a security vulnerability, please email [security@actualdomain.com](mailto:security@actualdomain.com) or open a private issue on GitHub.  
 You will receive a response within 48 hours.  
 If the vulnerability is accepted, we will coordinate a fix and disclosure timeline with you.  
 If declined, we will provide a clear explanation.
