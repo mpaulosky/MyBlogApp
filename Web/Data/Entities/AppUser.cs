@@ -2,33 +2,39 @@
 // Copyright (c) 2025. All rights reserved.
 // File Name :     AppUser.cs
 // Company :       mpaulosky
-// Author :        Matthew
-// Solution Name : MyBlogApp
-// Project Name :  Web
+// AppUser :        Matthew
+// Solution Name : TailwindBlog
+// Project Name :  Domain
 // =======================================================
 
 using System.ComponentModel.DataAnnotations;
 
 namespace Web.Data.Entities;
 
+/// <summary>
+///   Domain entity representing an application user.
+/// </summary>
 public class AppUser
 {
 
-/// <summary>
-///  Initializes a new instance of the <see cref="AppUser"/> class with default values.
-/// </summary>
-/// <param name="id"></param>
-/// <param name="userName"></param>
-/// <param name="email"></param>
-/// <param name="roles"></param>
+	/// <summary>
+	///   Parameterless constructor for serialization and test data generation.
+	/// </summary>
+	public AppUser() : this(string.Empty, string.Empty, string.Empty, []) { }
+
+	/// <summary>
+	///   Initializes a new instance of the <see cref="AppUser" /> class.
+	/// </summary>
+	/// <param name="id">The users Id</param>
+	/// <param name="userName">The username of the user.</param>
+	/// <param name="email">The email address of the user.</param>
+	/// <param name="roles">The list of roles assigned to the user.</param>
 	public AppUser(string id, string userName, string email, List<string>? roles)
 	{
-
 		Id = id;
 		UserName = userName;
 		Email = email;
-		Roles = roles ?? [];
-
+		Roles = roles;
 	}
 
 	/// <summary>
@@ -57,6 +63,6 @@ public class AppUser
 	/// <summary>
 	///   Gets an empty instance of AppUser with default values.
 	/// </summary>
-	public static readonly AppUser Empty = new(string.Empty, string.Empty, string.Empty, new List<string>());
+	public static AppUser Empty => new(string.Empty, string.Empty, string.Empty, []);
 
 }

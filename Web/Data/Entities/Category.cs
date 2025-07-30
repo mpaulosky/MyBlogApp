@@ -1,25 +1,32 @@
 // =======================================================
 // Copyright (c) 2025. All rights reserved.
-// File Name :     Category.cs
+// File Name :     Categories.cs
 // Company :       mpaulosky
 // Author :        Matthew
 // Solution Name : MyBlogApp
-// Project Name :  Web
+// Project Name :  Domain
 // =======================================================
 
-using System.ComponentModel.DataAnnotations;
-
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 using Web.Data.Abstractions;
 
 namespace Web.Data.Entities;
 
 /// <summary>
-///   Represents a blog category.
+///   Represents a blog category that can be assigned to posts.
 /// </summary>
+[Serializable]
 public class Category : Entity
 {
+
 	/// <summary>
-	///   Initializes a new instance of the <see cref="Category"/> class.
+	///   Parameterless constructor for serialization and test data generation.
+	/// </summary>
+	public Category() : this(string.Empty) { }
+
+	/// <summary>
+	///   Initializes a new instance of the <see cref="Category" /> class.
 	/// </summary>
 	/// <param name="name">The name of the category.</param>
 	public Category(string name)
@@ -28,30 +35,15 @@ public class Category : Entity
 	}
 
 	/// <summary>
-	///   Initializes a new instance of the <see cref="Category"/> class for EF.
-	/// </summary>
-	internal Category()
-	{
-	}
-
-	/// <summary>
 	///   Gets or sets the name of the category.
 	/// </summary>
-	[Required(ErrorMessage = "Name is required")]
-	[MaxLength(80)]
-	public string Name { get; set; } = string.Empty;
+	[BsonElement("name")]
+	[BsonRepresentation(BsonType.String)]
+	public string Name { get; set; }
 
 	/// <summary>
-	///   Gets or sets the articles in this category.
+	///   Gets the name of the category.
 	/// </summary>
-	public ICollection<Article> Articles { get; set; } = new List<Article>();
+	public static Category Empty => new(string.Empty) { Id = ObjectId.Empty };
 
-	/// <summary>
-	///   Gets an empty category instance.
-	/// </summary>
-	public static readonly Category Empty =
-		new Category(string.Empty)
-		{
-			Id = Guid.Empty
-		};
 }

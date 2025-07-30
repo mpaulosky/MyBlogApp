@@ -8,6 +8,8 @@
 // =======================================================
 
 using System.ComponentModel.DataAnnotations;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace Web.Data.Abstractions;
 
@@ -21,21 +23,22 @@ public abstract class Entity
 	/// <summary>
 	///   Gets the unique identifier for this entity.
 	/// </summary>
-	[Key]
-	[Required]
-	public Guid Id { get; protected init; } = Guid.CreateVersion7();
+	[BsonId]
+	public ObjectId Id { get; protected init; } = ObjectId.GenerateNewId();
 
 	/// <summary>
 	///   Gets the date and time when this entity was created.
 	/// </summary>
 	[Required(ErrorMessage = "A Created On Date is required")]
 	[Display(Name = "Created On")]
-	public DateTimeOffset CreatedOn { get; protected init; } = DateTimeOffset.UtcNow;
+	[BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
+	public DateTimeOffset CreatedOn { get; set; } = DateTimeOffset.UtcNow;
 
 	/// <summary>
 	///   Gets or sets the date and time when this entity was last modified.
 	/// </summary>
 	[Display(Name = "Modified On")]
+	[BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
 	public DateTimeOffset? ModifiedOn { get; set; }
 
 }
