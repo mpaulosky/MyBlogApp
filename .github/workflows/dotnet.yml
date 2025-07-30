@@ -27,6 +27,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
@@ -36,7 +38,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "18"
+          node-version: "22"
           cache: "npm"
           cache-dependency-path: |
             **/Web/package-lock.json
@@ -44,6 +46,10 @@ jobs:
       - name: Install Node.js dependencies
         working-directory: Web
         run: npm install
+
+      - name: Ensure Tailwind CLI is executable
+        working-directory: Web
+        run: chmod +x ./node_modules/.bin/tailwindcss
 
       - name: Build Tailwind CSS
         working-directory: Web
@@ -60,15 +66,17 @@ jobs:
 
       - name: Run all tests in all test projects
         run: |
-          for proj in $(find . -name "*.csproj" -path "*/Tests/*"); do
+          mkdir -p ${{ github.workspace }}/TestResults
+          for proj in $(find . -name "*.csproj" -path "*/tests/*"); do
             name=$(basename "$proj" .csproj)
-            dotnet test "$proj" --no-build --no-restore --logger "trx;LogFileName=${{ github.workspace }}/TestResults/${name}.trx" --settings runsettings.xml
+            dotnet test "$proj" --no-build --no-restore \
+              --logger "trx;LogFileName=${{ github.workspace }}/TestResults/${name}.trx"
           done
 
       - name: Upload Test Results
         uses: actions/upload-artifact@v4
         with:
-          name: TailwindBlog-Test-Results
+          name: MyBlogApp-Test-Results
           path: TestResults
 
       - name: Codecov
@@ -88,15 +96,10 @@ jobs:
           files: |
             TestResults/**/*.trx
 
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
       - name: Install GitVersion
         uses: gittools/actions/gitversion/setup@v4.0.1
         with:
-          versionSpec: "6.0"
+          versionSpec: "6.x"
 
       - name: Use GitVersion
         id: gitversion # step id used as a reference for output values
