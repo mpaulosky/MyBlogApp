@@ -21,9 +21,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      actions: write
 
     env:
       NUGET_PACKAGES: ${{ github.workspace }}/.nuget/packages
@@ -39,7 +36,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "22.x"
+          node-version: "18"
           cache: "npm"
           cache-dependency-path: |
             **/Web/package-lock.json
@@ -47,34 +44,31 @@ jobs:
       - name: Install Node.js dependencies
         working-directory: Web
         run: npm install
-    
-      - name: Fix permissions for Tailwind CLI
-        working-directory: Web
-        run: chmod +x ./node_modules/.bin/tailwindcss
-    
+
       - name: Build Tailwind CSS
-        working-directory: Web/wwwroot
+        working-directory: Web
         run: npm run build:css
 
       - name: Restore dependencies
         run: dotnet restore
 
       - name: Build
-        run: dotnet build MyBlogApp.slnx --no-restore
+        run: dotnet build --no-restore
+
+      - name: Create Test Results Directory
+        run: mkdir -p TestResults
 
       - name: Run all tests in all test projects
         run: |
-          mkdir -p ${{ github.workspace }}/TestResults
-          for proj in $(find . -name "*.csproj" -path "*/tests/*"); do
+          for proj in $(find . -name "*.csproj" -path "*/Tests/*"); do
             name=$(basename "$proj" .csproj)
-            dotnet test "$proj" --no-build --no-restore \
-              --logger "trx;LogFileName=${{ github.workspace }}/TestResults/${name}.trx"
+            dotnet test "$proj" --no-build --no-restore --logger "trx;LogFileName=${{ github.workspace }}/TestResults/${name}.trx" --settings runsettings.xml
           done
 
       - name: Upload Test Results
         uses: actions/upload-artifact@v4
         with:
-          name: MyBlogApp-Test-Results
+          name: TailwindBlog-Test-Results
           path: TestResults
 
       - name: Codecov
@@ -102,7 +96,7 @@ jobs:
       - name: Install GitVersion
         uses: gittools/actions/gitversion/setup@v4.0.1
         with:
-          versionSpec: "6.x"
+          versionSpec: "6.0"
 
       - name: Use GitVersion
         id: gitversion # step id used as a reference for output values
