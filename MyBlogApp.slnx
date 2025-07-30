@@ -21,9 +21,8 @@
     <File Path=".github\git-commit-instructions.md" />
   </Folder>
   <Folder Name="/tests/">
-    <Project Path="tests\AppHost.Tests\AppHost.Tests.csproj" Type="Classic C#" />
-    <Project Path="tests\Shared.Tests\Shared.Tests.csproj" Type="Classic C#" />
-    <Project Path="tests\Web.Tests\Web.Tests.csproj" Type="Classic C#" />
+    <Project Path="tests\Shared.Tests.Unit\Shared.Tests.Unit.csproj" />
+    <Project Path="tests\Web.Tests.Unit\Web.Tests.Unit.csproj" />
   </Folder>
   <Project Path="AppHost/AppHost.csproj" />
   <Project Path="ServiceDefaults/ServiceDefaults.csproj" />
