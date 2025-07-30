@@ -61,16 +61,13 @@ jobs:
       - name: Build
         run: dotnet build --no-restore
 
-      - name: Create Test Results Directory
-        run: mkdir -p TestResults
-
       - name: Run all tests in all test projects
         run: |
-          mkdir -p ${{ github.workspace }}/TestResults
           for proj in $(find . -name "*.csproj" -path "*/[Tt]ests/*"); do
+            echo "Project: $proj"
             name=$(basename "$proj" .csproj)
-            dotnet test "$proj" --no-build --no-restore \
-              --logger "trx;LogFileName=${{ github.workspace }}/TestResults/${name}.trx"
+            echo "Running tests in $name"
+            dotnet run --project "$proj" --no-build --no-restore --report-trx --report-trx-filename "$name.trx" --results-directory "TestResults"
           done
 
       - name: Upload Test Results
