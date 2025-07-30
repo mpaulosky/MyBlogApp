@@ -1,26 +1,23 @@
+using Aspire.Hosting;
+
 using static Shared.Services;
 
 var builder = DistributedApplication.CreateBuilder(args);
 
 var cache = builder.AddRedis(CACHE);
 
-var pgServer = builder.AddPostgres(SERVER)
-		.WithLifetime(ContainerLifetime.Persistent)
-		.WithDataVolume($"{SERVER}-data")
-		.WithPgAdmin(config =>
-		{
-			config.WithImageTag("latest");
-			config.WithLifetime(ContainerLifetime.Persistent);
-		});
+// Add MongoDB Atlas resource with environment variable
 
-var postgresDb = pgServer.AddDatabase(DATABASE);
+var mongoDb = builder.AddMongoDB("mongodb")
+    .WithEnvironment("ConnectionStrings__MongoDb", builder.Configuration["MongoDb:ConnectionStrings"])
+    .WithEnvironment("DatabaseName__MongoDb", builder.Configuration["MongoDb:DatabaseName"]);
 
 builder.AddProject<Projects.Web>(WEBSITE)
-		.WithExternalHttpEndpoints()
-		.WithHttpHealthCheck("/health")
-		.WithReference(cache)
-		.WaitFor(cache)
-		.WithReference(postgresDb)
-		.WaitFor(postgresDb);
+	.WithExternalHttpEndpoints()
+	.WithHttpHealthCheck("/health")
+	.WithReference(cache)
+	.WaitFor(cache)
+	.WithReference(mongoDb)
+	.WaitFor(mongoDb);
 
 builder.Build().Run();

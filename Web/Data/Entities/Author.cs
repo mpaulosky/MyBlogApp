@@ -4,25 +4,34 @@
 // Company :       mpaulosky
 // Author :        Matthew
 // Solution Name : MyBlogApp
-// Project Name :  Web
+// Project Name :  Domain
 // =======================================================
 
 using System.ComponentModel.DataAnnotations;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace Web.Data.Entities;
 
 /// <summary>
-///   Represents an author/user in the system.
+///   Domain entity representing an application user.
 /// </summary>
+[Serializable]
 public class Author
 {
+
 	/// <summary>
-	///   Initializes a new instance of the <see cref="Author"/> class.
+	///   Parameterless constructor for serialization and test data generation.
 	/// </summary>
-	/// <param name="id">The author ID.</param>
-	/// <param name="userName">The username.</param>
-	/// <param name="email">The email address.</param>
-	/// <param name="roles">The list of roles.</param>
+	public Author() : this(string.Empty, string.Empty, string.Empty, []) { }
+
+	/// <summary>
+	///   Initializes a new instance of the <see cref="Author" /> class.
+	/// </summary>
+	/// <param name="id">The users Id</param>
+	/// <param name="userName">The username of the user.</param>
+	/// <param name="email">The email address of the user.</param>
+	/// <param name="roles">The list of roles assigned to the user.</param>
 	public Author(string id, string userName, string email, List<string> roles)
 	{
 		Id = id;
@@ -32,39 +41,39 @@ public class Author
 	}
 
 	/// <summary>
-	///   Initializes a new instance of the <see cref="Author"/> class for EF.
-	/// </summary>
-	internal Author()
-	{
-	}
-
-	/// <summary>
 	///   Gets or sets the id of the user.
 	/// </summary>
+	[BsonElement("id")]
+	[BsonRepresentation(BsonType.String)]
 	[Display(Name = "Author ID")]
-	public string Id { get; set; } = string.Empty;
+	public string Id { get; set; }
 
 	/// <summary>
 	///   Gets or sets the username of the user.
 	/// </summary>
+	[BsonElement("userName")]
+	[BsonRepresentation(BsonType.String)]
 	[Display(Name = "User Name")]
-	public string UserName { get; set; } = string.Empty;
+	public string UserName { get; set; }
 
 	/// <summary>
 	///   Gets or sets the email address of the user.
 	/// </summary>
+	[BsonElement("email")]
+	[BsonRepresentation(BsonType.String)]
 	[Display(Name = "Email Address")]
-	public string Email { get; set; } = string.Empty;
+	public string Email { get; set; }
 
 	/// <summary>
 	///   Gets or sets the list of roles assigned to the user.
 	/// </summary>
+	[BsonElement("roles")]
 	[Display(Name = "User Roles")]
-	public List<string> Roles { get; set; } = [];
+	public List<string> Roles { get; set; }
 
 	/// <summary>
 	///   Gets an empty instance of Author with default values.
 	/// </summary>
-	public static readonly Author Empty = new(string.Empty, string.Empty, string.Empty, new List<string>());
+	public static Author Empty => new(string.Empty, string.Empty, string.Empty, []);
 
 }

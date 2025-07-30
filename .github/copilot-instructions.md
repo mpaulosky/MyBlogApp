@@ -2,7 +2,7 @@
 
 **Last updated:** June 12, 2025
 
-These instructions define the required coding, architecture, and project rules for all .NET code in this repository. They are based on the actual practices and conventions in the TailwindBlogApp solution. For more details, see [CONTRIBUTING.md](../docs/CONTRIBUTING.md).
+These instructions define the required coding, architecture, and project rules for all .NET code in this repository. They are based on the actual practices and conventions in the MyBlogAppApp solution. For more details, see [CONTRIBUTING.md](../docs/CONTRIBUTING.md).
 
 ---
 

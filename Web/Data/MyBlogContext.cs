@@ -7,70 +7,25 @@
 // Project Name :  Web
 // =======================================================
 
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-
-using Web.Data.Entities;
+using MongoDB.Driver;
 
 namespace Web.Data;
 
-public class MyBlogContext : DbContext
+/// <summary>
+///   MongoDB context for blog data.
+/// </summary>
+public class MyBlogContext
 {
 
-	public MyBlogContext(DbContextOptions<MyBlogContext> options) : base(options) { }
+	private readonly IMongoDatabase _database;
 
-	public DbSet<Article> Articles { get; set; }
-	public DbSet<Category> Categories { get; set; }
-
-	protected override void OnModelCreating(ModelBuilder modelBuilder)
+	public MyBlogContext(IMongoClient mongoClient, IConfiguration configuration)
 	{
-
-		modelBuilder
-			.Entity<Article>();
-
-		modelBuilder
-				.Entity<Article>()
-				.HasIndex(e => e.UrlSlug)
-				.IsUnique();
-
-		modelBuilder
-				.Entity<Article>()
-				.Property(e => e.CreatedOn)
-				.HasConversion(new DateTimeOffsetConverter());
-
-		modelBuilder
-				.Entity<Article>()
-				.Property(e => e.ModifiedOn)
-				.HasConversion(new DateTimeOffsetConverter());
-
-		modelBuilder
-				.Entity<Article>()
-				.Property(e => e.PublishedOn)
-				.HasConversion(new DateTimeOffsetConverter());
-
-		modelBuilder
-			.Entity<Category>();
-
-		modelBuilder
-				.Entity<Category>()
-				.Property(e => e.CreatedOn)
-				.HasConversion(new DateTimeOffsetConverter());
-
-		modelBuilder
-				.Entity<Category>()
-				.Property(e => e.ModifiedOn)
-				.HasConversion(new DateTimeOffsetConverter());
-
+		var databaseName = configuration["MongoDb:Database"] ?? "ArticleDb";
+		_database = mongoClient.GetDatabase(databaseName);
 	}
 
-}
-
-public class DateTimeOffsetConverter : ValueConverter<DateTimeOffset, DateTime>
-{
-
-	public DateTimeOffsetConverter() : base(
-			v => v.UtcDateTime, // Store as UTC DateTime
-			v => new DateTimeOffset(v, TimeSpan.Zero)) // Retrieve as DateTimeOffset (UTC)
-	{ }
+	public IMongoCollection<Article> Articles => _database.GetCollection<Article>("Articles");
+	public IMongoCollection<Category> Categories => _database.GetCollection<Category>("Categories");
 
 }

@@ -12,9 +12,11 @@ namespace Shared;
 public static class Services
 {
 
-	public const string SERVER = "Publication-Server";
+	public const string SERVER = "Article-Server";
 
-	public const string DATABASE = "PublicationDb";
+	public const string DATABASE = "ArticleDb";
+	
+	public const string SQLCONNECTION = "ArticleConnection";
 
 	public const string WEBSITE = "Web";
 
