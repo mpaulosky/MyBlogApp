@@ -6,14 +6,6 @@
 // Project Name :  Web.Tests.Unit
 // =======================================================
 
-using Microsoft.Extensions.Configuration;
-
-using MongoDB.Driver;
-
-using NSubstitute;
-
-using Web.Data.Entities;
-
 namespace Web.Data;
 
 /// <summary>
@@ -23,18 +15,22 @@ namespace Web.Data;
 [TestSubject(typeof(MyBlogContext))]
 public class MyBlogContextTests
 {
+
 	private readonly IMongoClient _mongoClient;
 	private readonly IConfiguration _configuration;
 
 	public MyBlogContextTests()
 	{
+
 		_mongoClient = Substitute.For<IMongoClient>();
 		_configuration = Substitute.For<IConfiguration>();
+		
 	}
 
 	[Fact]
 	public void Constructor_WithDatabaseNameInConfig_UsesConfigValue()
 	{
+
 		// Arrange
 		_configuration["MongoDb:Database"] = "TestDb";
 		var database = Substitute.For<IMongoDatabase>();
@@ -45,11 +41,13 @@ public class MyBlogContextTests
 
 		// Assert
 		context.Should().NotBeNull();
+		
 	}
 
 	[Fact]
 	public void Constructor_WithoutDatabaseNameInConfig_UsesDefault()
 	{
+
 		// Arrange
 		_configuration["MongoDb:Database"] = null;
 		var database = Substitute.For<IMongoDatabase>();
@@ -60,11 +58,13 @@ public class MyBlogContextTests
 
 		// Assert
 		context.Should().NotBeNull();
+		
 	}
 
 	[Fact]
 	public void Articles_Property_ReturnsCollection()
 	{
+
 		// Arrange
 		var database = Substitute.For<IMongoDatabase>();
 		var articlesCollection = Substitute.For<IMongoCollection<Article>>();
@@ -77,11 +77,13 @@ public class MyBlogContextTests
 
 		// Assert
 		result.Should().BeSameAs(articlesCollection);
+		
 	}
 
 	[Fact]
 	public void Categories_Property_ReturnsCollection()
 	{
+
 		// Arrange
 		var database = Substitute.For<IMongoDatabase>();
 		var categoriesCollection = Substitute.For<IMongoCollection<Category>>();
@@ -94,6 +96,7 @@ public class MyBlogContextTests
 
 		// Assert
 		result.Should().BeSameAs(categoriesCollection);
+		
 	}
 
 	[Theory]
@@ -101,6 +104,7 @@ public class MyBlogContextTests
 	[InlineData("")]
 	public void Constructor_WithNullOrEmptyDatabaseName_UsesDefault(string dbName)
 	{
+
 		// Arrange
 		_configuration["MongoDb:Database"] = dbName;
 		var database = Substitute.For<IMongoDatabase>();
@@ -111,6 +115,7 @@ public class MyBlogContextTests
 
 		// Assert
 		context.Should().NotBeNull();
+		
 	}
 
 }

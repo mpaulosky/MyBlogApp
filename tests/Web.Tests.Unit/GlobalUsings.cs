@@ -14,3 +14,11 @@ global using Bunit;
 global using FluentAssertions;
 
 global using JetBrains.Annotations;
+
+global using Microsoft.Extensions.Configuration;
+
+global using MongoDB.Driver;
+
+global using NSubstitute;
+
+global using Web.Data.Entities;
