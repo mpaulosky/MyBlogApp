@@ -7,8 +7,6 @@
 // Project Name :  Domain.Tests.Unit
 // =======================================================
 
-using Web.Data.Entities;
-
 using MongoDB.Bson;
 
 namespace Web.Data.Models;
