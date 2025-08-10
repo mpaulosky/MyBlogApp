@@ -95,13 +95,13 @@ jobs:
             TestResults/**/*.trx
 
       - name: Install GitVersion
-        uses: gittools/actions/gitversion/setup@v4.0.1
+        uses: gittools/actions/gitversion/setup@v4.1.0
         with:
           versionSpec: "6.x"
 
       - name: Use GitVersion
         id: gitversion # step id used as a reference for output values
-        uses: gittools/actions/gitversion/execute@v4.0.1
+        uses: gittools/actions/gitversion/execute@v4.1.0
 
       - run: |
           echo "FullSemVer: ${{ steps.gitversion.outputs.fullSemVer }}"
